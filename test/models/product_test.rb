@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
-   test "atributos do produto não podem ser vazios" do
+    fixtures :product
+
+    test "atributos do produto não podem ser vazios" do
         product = Product.new
         assert product.invalid?
         assert product.errors[:title].any?

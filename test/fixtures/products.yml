@@ -11,3 +11,17 @@ two:
   description: MyText
   image_url: MyString
   price: 9.99
+
+my_fixture_book:
+  title: MyFixtureBook
+  description:
+    The fixture file contains an entry for each row that we want to insert into the
+    database. Each row is given a name. In the case of the Rails-generated fixture,
+    the rows are named one and two. This name has no significance as far as the
+    database is concerned—it is not inserted into the row data. Instead, as we’ll
+    see shortly, the name gives us a convenient way to reference test data inside
+    our test code. Inside each entry you’ll see an indented list of name-value pairs.
+    Just like in your config/database.yml , you must use spaces, not tabs, at the start
+    of each of the data lines, and all the lines for a row must have the same indentation.
+  image_url: my_book_fixture.jpg
+  price: 22.0
