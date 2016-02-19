@@ -30,5 +30,27 @@ class ProductTest < ActiveSupport::TestCase
 
     end
 
+    test "url da imagem" do
+        ok = %w{alane.gif zuzu.jpg alfredo.png teste.PNG}
+        bad = %w{alane.git alane.gif.more alane.png.git}
 
+        ok.each do |image_url|
+            assert new_product(image_url).valid?, "#{image_url} should be valid"
+        end
+
+        bad.each do |image_url|
+            assert new_product(image_url).invalid? "#{image_url} shouldn't be valid"
+        end
+
+
+    end
+
+    def new_product(image_url)
+        product = Product.new(
+            title: 'TesteRails',
+            description: 'preco_do_produo',
+            image_url: image_url,
+            price: 10
+        )
+    end
 end
