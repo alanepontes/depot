@@ -41,7 +41,7 @@ class ProductTest < ActiveSupport::TestCase
         end
 
         bad.each do |image_url|
-            assert new_product(image_url).invalid? "#{image_url} shouldn't be valid"
+            assert new_product(image_url).invalid?, "#{image_url} shouldn't be valid"
         end
 
 
@@ -57,6 +57,16 @@ class ProductTest < ActiveSupport::TestCase
 
         assert product.invalid?
         assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
+    end
+
+    test "o titulo deve ter 10 ou mais caracteres" do
+        product = products(:my_fixture_book)
+
+        if product.title.length >= 10
+            assert true
+        else
+            assert false
+        end
     end
 
     def new_product(image_url)
