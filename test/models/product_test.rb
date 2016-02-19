@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
-    fixtures :product
+    fixtures :products
 
     test "atributos do produto não podem ser vazios" do
         product = Product.new
@@ -47,6 +47,18 @@ class ProductTest < ActiveSupport::TestCase
 
     end
 
+    test "produto não é válido sem título único" do
+        product = Product.new(
+                title:          products(:my_fixture_book).title,
+                description:    'teste',
+                image_url:      'teste.jpg',
+                price:          10
+            )
+
+        assert product.invalid?
+        assert_equal ["has already been taken"], product.errors[:title]
+    end
+
     def new_product(image_url)
         product = Product.new(
             title: 'TesteRails',
@@ -55,4 +67,6 @@ class ProductTest < ActiveSupport::TestCase
             price: 10
         )
     end
+
+
 end
