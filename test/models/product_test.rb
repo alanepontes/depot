@@ -56,7 +56,7 @@ class ProductTest < ActiveSupport::TestCase
             )
 
         assert product.invalid?
-        assert_equal ["has already been taken"], product.errors[:title]
+        assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
     end
 
     def new_product(image_url)
